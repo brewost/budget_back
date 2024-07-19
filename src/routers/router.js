@@ -19,10 +19,10 @@ const {
 
 // Routes for Ledger
 router.get('/ledger', browseLedger);
-router.get('/ledger/total', browseLedgerTotal); 
+router.get('/ledger/total', browseLedgerTotal);
 router.get('/ledger/:id', readLedger);
 router.post('/ledger', insertLedger);
-router.put('/ledger/:id', updateLedger); 
+router.put('/ledger/:id', updateLedger);
 router.delete('/ledger/:id', deleteLedger);
 
 // Routes for Category

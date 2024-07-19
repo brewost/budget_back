@@ -1,3 +1,4 @@
+-- Create the Ledger table
 CREATE TABLE Ledger (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -15,9 +16,9 @@ CREATE TABLE Category (
 
 -- Create the Ledger_cat junction table
 CREATE TABLE Ledger_cat (
-    id INT AUTO_INCREMENT PRIMARY KEY,
     ledger_id INT,
     category_id INT,
+    PRIMARY KEY (ledger_id, category_id),
     FOREIGN KEY (ledger_id) REFERENCES Ledger (id),
     FOREIGN KEY (category_id) REFERENCES Category (id)
 );
@@ -25,15 +26,19 @@ CREATE TABLE Ledger_cat (
 -- Insert multiple rows into Ledger table
 INSERT INTO
     Ledger (name, money, debit)
-VALUES ('Toy Car', 5.99, TRUE),
-    ('Birthday Gift', 40.00, FALSE),
-    ('Allowance', 10.00, FALSE),
-    ('Comic Book', 3.50, TRUE),
+VALUES ('Toy Dragon', 5.99, TRUE),
+    (
+        'Birthday Money',
+        40.00,
+        FALSE
+    ),
+    ('Pocket Money', 10.00, FALSE),
+    ('Comic', 3.50, TRUE),
     ('Ice Cream', 2.75, TRUE),
-    ('Found Money', 5.00, FALSE),
+    ('Tooth fairy', 2.00, FALSE),
     ('Sold Old Toys', 12.50, FALSE),
-    ('Action Figure', 12.49, TRUE),
-    ('Coloring Book', 4.25, TRUE);
+    ('Fuggler', 5.00, TRUE),
+    ('Redwall', 4.99, TRUE);
 
 -- Insert multiple rows into Category table
 INSERT INTO
@@ -44,17 +49,20 @@ VALUES ('Toys'),
     ('Gifts'),
     ('Income'),
     ('Miscellaneous'),
-    ('Sales');
+    ('Sales'),
+    ('Peluche');
 
 -- Insert multiple rows into Ledger_cat junction table
 INSERT INTO
     Ledger_cat (ledger_id, category_id)
 VALUES (1, 1),
     (2, 4),
+    (2, 5),
     (3, 5),
     (4, 2),
     (5, 3),
-    (6, 6),
-    (7, 7),
+    (6, 4),
+    (7, 5),
     (8, 1),
+    (8, 8),
     (9, 2);
